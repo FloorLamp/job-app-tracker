@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jobtracker</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "Job Tracker", jobs_path, class: "brand" %>
+        <ul class="nav">
+          <li <% if request.fullpath == jobs_path %>class="active"<% end %>><%= link_to "Jobs", jobs_path %></li>
+          <li <% if request.fullpath == job_statuses_path %>class="active"<% end %>><%= link_to "Statuses", job_statuses_path %></li>
+        </ul>
+        
+        <%= link_to "New Job", new_job_path, class: "btn btn-primary pull-right" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <%= yield %>
+  </div>  
+</body>
+</html>

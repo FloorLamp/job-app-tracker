@@ -1,0 +1,18 @@
+<h3>Statuses</h3>
+  
+<div id="details-actions">
+<% @job_statuses.each do |s| %>  
+  <%= link_to "X", job_status_path(s), method: :delete, class: "btn btn-danger" %>
+  <%= form_for s, html: { class: "form-inline" } do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_field :color %>
+    <%= f.submit "Save", class: "btn" %>
+  <% end %>
+<% end %>
+</div>
+
+<%= form_for :job_status, html: { class: "form-inline" } do |f| %>
+    <%= f.text_field :name, placeholder: :Name %>
+    <%= f.text_field :color, placeholder: :Color %>
+    <%= f.submit "Save", class: "btn" %>
+<% end %>

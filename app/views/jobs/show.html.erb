@@ -1,0 +1,56 @@
+<%= link_to "Back", jobs_path %>
+
+<h3>Job Details</h3>
+  
+<%= render "form" %>
+
+<h4>Actions:</h4>
+<div id="details-actions">
+<% @job.job_actions.each do |a| %>  
+  <%= link_to "X", job_job_action_path(@job, a), method: :delete, class: "btn btn-danger" %>
+  <%= form_for [@job, a], html: { class: :"form-inline" } do |f| %>
+    <%= f.text_field :date, value: a.date? ? a.date.strftime("%d/%m/%Y") : nil, "data-behaviour" => "datepicker" %>
+    <%= f.select(:name, ["Applied", "Phone", "Video", "In-person", "Exercise", "Code Review"]) %>
+    
+    <%= f.collection_select :job_status_id, JobStatus.all, :id, :name %>
+    <%= f.submit "Save", class: :btn %>
+  <% end %>
+<% end %>
+</div>
+
+<%= form_for([@job, @job.job_actions.build], html: { class: :"form-horizontal" }) do |f| %>
+  <div class="control-group">
+    <div class="controls">
+      <h4>Add an action</h4>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :date, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :date, "data-behaviour" => "datepicker" %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :name, class: "control-label" %>
+    <div class="controls">
+      <%= select(:job_action, :name, ["Applied", "Phone", "Video", "In-person", "Exercise", "Code Review"]) %>
+    </div>
+  </div>
+ 
+  <div class="control-group">
+    <%= f.label :status, class: "control-label" %>
+    <div class="controls">
+      <%= collection_select(:job_action, :job_status_id, JobStatus.all, :id, :name, {selected: "Pending"}) %>
+    </div>
+  </div>
+ 
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Save", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to "Delete Job", job_path(@job), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>

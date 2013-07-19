@@ -1,0 +1,46 @@
+<%= form_for @job, html: { class: "form-horizontal" } do |f| %>
+  <%= f.fields_for :company do |c| %>
+  <%= c.hidden_field :icon_url %>
+  <div class="control-group">
+    <label class="control-label">Company Name</label>
+    <div class="controls">
+      <%= c.text_field :name %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= c.label :website_url, class: "control-label" %>
+    <div class="controls favicon-input">
+      <img class="favicon" src="<%= @company_favicon %>">
+      <%= c.text_field :website_url %>
+    </div>
+  </div>
+  <% end %>
+  
+  <div class="control-group">
+    <%= f.label :position, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :position %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :remote, class: "control-label" %>
+    <div class="controls">
+      <%= f.check_box :remote %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :source, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :source %>
+    </div>
+  </div>
+ 
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Update", :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

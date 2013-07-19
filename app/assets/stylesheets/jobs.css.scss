@@ -1,0 +1,29 @@
+// Place all the styles related to the jobs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#details-actions {
+  .btn-danger {
+    position: absolute;
+    margin-left: -38px;
+  }
+}
+
+.jobs-table {
+  .favicon {
+    margin-right: 5px;
+    margin-top: -2px;
+  }
+}
+
+.favicon-input {
+  .favicon {
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 8px;
+  }
+  
+  input {
+    padding-left: 28px;
+  }
+}
