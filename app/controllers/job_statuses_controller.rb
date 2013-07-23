@@ -4,29 +4,22 @@ class JobStatusesController < ApplicationController
   end
   
   def create
-    @job_status = JobStatus.new(params.require(:job_status).permit(:name, :color))
+    @job_status = JobStatus.create(params.require(:job_status).permit(:name, :color))
     
-    if @job_status.save
-      redirect_to 'index'
-    else
-      render 'index'
-    end
+    redirect_to job_statuses_path
   end
   
   def update
     @job_status = JobStatus.find(params[:id])
+    @job_status.update(params[:job_status].permit(:name, :color))
     
-    if @job_status.update(params[:job_status].permit(:name, :color))
-      redirect_to 'index'
-    else
-      render 'index'
-    end
+    redirect_to job_statuses_path
   end
   
   def destroy
     @job_status = JobStatus.find(params[:id])
     @job_status.destroy
    
-    redirect_to 'index'
+    redirect_to job_statuses_path
   end
 end

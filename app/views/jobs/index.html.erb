@@ -1,59 +1,15 @@
-<h3><%= @pending_jobs.count %> Jobs Pending</h3>
- 
-<table class="table table-bordered table-hover jobs-table">
-  <thead>
-    <tr>
-      <th>Company</th>
-      <th>Position</th>
-      <th>Source</th>
-      <th>Status</th>
-      <th>Last Updated</th>
-    </tr>
-  <thead>
-  <tbody>
-    <% @pending_jobs.each do |j| %>
-    <tr>
-      <td><img class="favicon" src="<%= j.company ? j.company.icon_url : nil %>"><%= link_to j.company ? j.company.name : nil, j %></td>
-      <td><% if j.remote %><span class="label label-info">Remote</span> <% end %><%= j.position %></td>
-      <td><%= j.source %></td>
-      <td>
-        <% j.job_actions.each do |a| %>
-          <span class="label" style="background-color: <%= a.job_status.color %>"><%= a.name %></span>
-        <% end %>
-      </td>
-      <td><%= j.last_action_date ? j.last_action_date.strftime("%B %d, %Y") : nil %></td>
-      <td><%= j.last_status %></td>
-    </tr>
-    <% end %>
-  <tbody>
-</table>
+<h3><%= pluralize(@passed_jobs.count, "Job Offer") %></h3>
 
-<h3><%= @failed_jobs.count %> Jobs Failed</h3>
+<%= render "display_table", jobs: @passed_jobs %>
 
-<table class="table table-bordered table-hover jobs-table">
-  <thead>
-    <tr>
-      <th>Company</th>
-      <th>Position</th>
-      <th>Source</th>
-      <th>Status</th>
-      <th>Last Updated</th>
-    </tr>
-  <thead>
-  <tbody>
-    <% @failed_jobs.each do |j| %>
-    <tr>
-      <td><img class="favicon" src="<%= j.company ? j.company.icon_url : nil %>"><%= link_to j.company ? j.company.name : nil, j %></td>
-      <td><% if j.remote %><span class="label label-info">Remote</span> <% end %><%= j.position %></td>
-      <td><%= j.source %></td>
-      <td>
-        <% j.job_actions.each do |a| %>
-          <span class="label" style="background-color: <%= a.job_status.color %>"><%= a.name %></span>
-        <% end %>
-      </td>
-      <td><%= j.last_action_date ? j.last_action_date.strftime("%B %d, %Y") : nil %></td>
-      <td><%= j.last_status %></td>
-    </tr>
-    <% end %>
-  <tbody>
-</table>
+<h3><%= pluralize(@in_progress_jobs.count, "Job") %> In Progress</h3>
+
+<%= render "display_table", jobs: @in_progress_jobs %>
+
+<h3><%= pluralize(@pending_jobs.count, "Job Application") %> Pending</h3>
+
+<%= render "display_table", jobs: @pending_jobs %>
+
+<h3><%= pluralize(@failed_jobs.count, "Job") %> Failed</h3>
+
+<%= render "display_table", jobs: @failed_jobs %>

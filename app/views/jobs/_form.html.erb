@@ -35,6 +35,15 @@
     <%= f.label :source, class: "control-label" %>
     <div class="controls">
       <%= f.text_field :source %>
+      Inbound?
+      <%= f.check_box :inbound %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :liked, class: "control-label" %>
+    <div class="controls">
+      <%= f.check_box :liked %>
     </div>
   </div>
  

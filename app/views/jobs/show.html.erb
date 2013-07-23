@@ -10,7 +10,7 @@
   <%= link_to "X", job_job_action_path(@job, a), method: :delete, class: "btn btn-danger" %>
   <%= form_for [@job, a], html: { class: :"form-inline" } do |f| %>
     <%= f.text_field :date, value: a.date? ? a.date.strftime("%d/%m/%Y") : nil, "data-behaviour" => "datepicker" %>
-    <%= f.select(:name, ["Applied", "Phone", "Video", "In-person", "Exercise", "Code Review"]) %>
+    <%= f.select(:name, ["Applied", "Phone", "Video", "Coding", "In-person", "Exercise", "Code Review", "Offer"]) %>
     
     <%= f.collection_select :job_status_id, JobStatus.all, :id, :name %>
     <%= f.submit "Save", class: :btn %>
@@ -35,7 +35,7 @@
   <div class="control-group">
     <%= f.label :name, class: "control-label" %>
     <div class="controls">
-      <%= select(:job_action, :name, ["Applied", "Phone", "Video", "In-person", "Exercise", "Code Review"]) %>
+      <%= select(:job_action, :name, ["Applied", "Phone", "Video", "Coding", "In-person", "Exercise", "Code Review", "Offer"]) %>
     </div>
   </div>
  
