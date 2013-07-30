@@ -1,15 +1,15 @@
-<h3><%= pluralize(@passed_jobs.count, "Job Offer") %></h3>
+<h3><%= pluralize(@passed_jobs.count, "Offer") %></h3>
 
 <%= render "display_table", jobs: @passed_jobs %>
 
-<h3><%= pluralize(@in_progress_jobs.count, "Job") %> In Progress</h3>
+<h3><%= pluralize(@in_progress_jobs.count, "Application") %> In Progress</h3>
 
 <%= render "display_table", jobs: @in_progress_jobs %>
 
-<h3><%= pluralize(@pending_jobs.count, "Job Application") %> Pending</h3>
+<h3><%= pluralize(@pending_jobs.count, "Application") %> Pending</h3>
 
 <%= render "display_table", jobs: @pending_jobs %>
 
-<h3><%= pluralize(@failed_jobs.count, "Job") %> Failed</h3>
+<h3><%= pluralize(@failed_jobs.count, "Application") %> Done</h3>
 
 <%= render "display_table", jobs: @failed_jobs %>

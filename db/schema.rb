@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130721222233) do
+ActiveRecord::Schema.define(version: 20130730143216) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -43,14 +43,7 @@ ActiveRecord::Schema.define(version: 20130721222233) do
     t.datetime "updated_at"
   end
 
-  create_table "jobs", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "position"
-    t.string   "source"
-    t.boolean  "remote"
-    t.boolean  "liked"
-    t.boolean  "inbound"
-  end
+# Could not dump table "jobs" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end
